@@ -1900,52 +1900,7 @@
       }
 
       // 2. Trigger the Email Function with verified data strings
-      try {
-  const emailRes = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer re_Mt7YqHr1_MgfgQx7hDpSXcWK1PWLUJ494'
-    },
-    body: JSON.stringify({
-      from: 'ChefConnect <bookings@genzchef.work.gd>',
-      to: [userEmail],
-      subject: 'Your chef booking is confirmed! 🍳',
-      html: `
-        <div style="font-family:sans-serif;max-width:520px;margin:0 auto;padding:24px;color:#1C1917">
-          <div style="background:#E8622A;padding:20px 24px;border-radius:10px 10px 0 0">
-            <h1 style="color:white;margin:0;font-size:22px">Booking Confirmed ✓</h1>
-          </div>
-          <div style="border:1px solid #E7E2DC;border-top:none;padding:24px;border-radius:0 0 10px 10px">
-            <p style="margin:0 0 16px">Hi <b>${userName}</b>, your booking is confirmed!</p>
-            <table style="width:100%;border-collapse:collapse">
-              <tr><td style="padding:10px 0;border-bottom:1px solid #E7E2DC;color:#78716C;width:40%">Chef</td>
-                  <td style="padding:10px 0;border-bottom:1px solid #E7E2DC;font-weight:600">${chefDetails.name}</td></tr>
-              <tr><td style="padding:10px 0;border-bottom:1px solid #E7E2DC;color:#78716C">Date</td>
-                  <td style="padding:10px 0;border-bottom:1px solid #E7E2DC;font-weight:600">June ${selectedDay}, 2026</td></tr>
-              <tr><td style="padding:10px 0;border-bottom:1px solid #E7E2DC;color:#78716C">Time</td>
-                  <td style="padding:10px 0;border-bottom:1px solid #E7E2DC;font-weight:600">${startTime}</td></tr>
-              <tr><td style="padding:10px 0;border-bottom:1px solid #E7E2DC;color:#78716C">Duration</td>
-                  <td style="padding:10px 0;border-bottom:1px solid #E7E2DC;font-weight:600">${hours} hours</td></tr>
-              <tr><td style="padding:10px 0;border-bottom:1px solid #E7E2DC;color:#78716C">Address</td>
-                  <td style="padding:10px 0;border-bottom:1px solid #E7E2DC;font-weight:600">${userAddress}</td></tr>
-              <tr><td style="padding:10px 0;color:#78716C">Amount Paid</td>
-                  <td style="padding:10px 0;font-weight:600;color:#E8622A">₹${total.toLocaleString('en-IN')}</td></tr>
-            </table>
-            <p style="margin:20px 0 0;font-size:13px;color:#78716C">
-              Need help? Email us at <a href="mailto:support@genzchef.work.gd" style="color:#E8622A">support@genzchef.work.gd</a>
-            </p>
-          </div>
-        </div>
-      `
-    })
-  });
-  const emailData = await emailRes.json();
-  console.log('Email result:', emailData);
-} catch (e) {
-  console.warn('Email failed:', e);
-}
-          
+      
 
       if (result.success) {
         document.getElementById('success-sub-text').textContent =
